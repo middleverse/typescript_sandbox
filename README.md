@@ -1,2 +1,3 @@
-# typescript_sandbox
-learning typescript
+# Typescript Projects
+
+- Fetch Json using axios
