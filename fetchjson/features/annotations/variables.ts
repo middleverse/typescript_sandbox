@@ -13,6 +13,11 @@ let now = new Date();
 let colors: string[] = ['red', 'green', 'blue']
 let truths: boolean[] = [true, true, false]
 
+// since the test variable isn't defined on this line, 
+// we need type annotation to define the type
+let test: string = undefined; 
+test = 'test';
+
 // Classes
 class Car {
 
@@ -31,9 +36,12 @@ const logNumber: (i: number) => void = (i: number) => {
     console.log(i);
 }
 
-
 // Summary
 // All the above are written in type annotations,
 // but not even a single example above requires type annotations
 
-// What is the point of a type annotation? 
+// When to use annotations?
+// 1) Function that returns the 'any' type
+const json = '{"x": 10, "y": 20, "z": 10}';
+const coordinates = JSON.parse(json)
+console.log(coordinates.x)
