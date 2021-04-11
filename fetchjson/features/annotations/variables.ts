@@ -43,5 +43,29 @@ const logNumber: (i: number) => void = (i: number) => {
 // When to use annotations?
 // 1) Function that returns the 'any' type
 const json = '{"x": 10, "y": 20, "z": 10}';
-const coordinates = JSON.parse(json)
-console.log(coordinates.x)
+const coordinates1 = JSON.parse(json); // type inferred -> type any, we don't want 'any' 
+const coordinates2: { x: number; y: number; z: number } = JSON.parse(json); // type annotated
+console.log(coordinates2.x);
+
+// 2) When we declare a variable on one line and 
+// initialize it later
+let words = ['red', 'green', 'blue'];
+let foundWordAnyType; // the inferred type is 'any', we don't want that
+let foundWord: boolean; // type annotated, inferred type boolean
+
+for (let i = 0; i < words.length; i++) {
+    if (words[i] === 'green') {
+        foundWord = true;
+    }
+}
+
+// 3) When we want a variable to have a type
+// that can't be reasonable inferred (super important)
+let numbers = [-10, -100, 20];
+let numberAboveZero: boolean | number = false; // type annotation in the form of an "or" statement
+
+for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] > 0) {
+        numberAboveZero = numbers[i];
+    }
+}
